@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\dev\ChecksumValidation\src\ChecksumUnitTest\bin\Debug\ChecksumUnitTest.dll" total="16" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2012-01-19" time="16:31:36">
+  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.4216" os-version="Microsoft Windows NT 6.0.6002 Service Pack 2" platform="Win32NT" cwd="C:\dev\ChecksumValidation\src\ChecksumUnitTest\bin\Debug" machine-name="DELLDIMXPS-MANU" user="Standard" user-domain="DellDimXPS-Manu" />
+  <culture-info current-culture="de-DE" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\dev\ChecksumValidation\src\ChecksumUnitTest\bin\Debug\ChecksumUnitTest.dll" executed="True" result="Success" success="True" time="25.633" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="ChecksumValidation" executed="True" result="Success" success="True" time="25.617" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="UnitTest" executed="True" result="Success" success="True" time="25.617" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="ValidationTester" executed="True" result="Success" success="True" time="25.617" asserts="2">
+                <results>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestBankAccountValidationNegativelyArgumentException" executed="True" result="Success" success="True" time="0.047" asserts="0">
+                    <categories>
+                      <category name="BankAccountValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestBankAccountValidationNegativelyBankException" executed="True" result="Success" success="True" time="4.898" asserts="4156">
+                    <categories>
+                      <category name="BankAccountValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestBankAccountValidationNegativelyNullReferenceException" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                    <categories>
+                      <category name="BankAccountValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestBankAccountValidationPositively" executed="True" result="Success" success="True" time="2.605" asserts="0">
+                    <categories>
+                      <category name="BankAccountValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestCreditCardValidationNegativelyArgumentException" executed="True" result="Success" success="True" time="0.047" asserts="0">
+                    <categories>
+                      <category name="CreditCardValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestCreditCardValidationNegativelyCreditCardValidationException" executed="True" result="Success" success="True" time="0.359" asserts="178">
+                    <categories>
+                      <category name="CreditCardValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestCreditCardValidationNegativelyNullReferenceException" executed="True" result="Success" success="True" time="0.016" asserts="0">
+                    <categories>
+                      <category name="CreditCardValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestCreditCardValidationPositively" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                    <categories>
+                      <category name="CreditCardValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestIbanValidationNegativelyArgumentException" executed="True" result="Success" success="True" time="0.016" asserts="0">
+                    <categories>
+                      <category name="IbanValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestIbanValidationNegativelyIbanValidationException" executed="True" result="Success" success="True" time="0.374" asserts="198">
+                    <categories>
+                      <category name="IbanValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestIbanValidationNegativelyNullReferenceException" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                    <categories>
+                      <category name="IbanValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestIbanValidatorPositively" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                    <categories>
+                      <category name="IbanValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestIdentityValidationNegativelyArgumentException" executed="True" result="Success" success="True" time="0.047" asserts="0">
+                    <categories>
+                      <category name="IdentityValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestIdentityValidationNegativelyIdentityValidationException" executed="True" result="Success" success="True" time="0.312" asserts="288">
+                    <categories>
+                      <category name="IdentityValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestIdentityValidationNegativelyNullReferenceException" executed="True" result="Success" success="True" time="0.016" asserts="0">
+                    <categories>
+                      <category name="IdentityValidation" />
+                    </categories>
+                  </test-case>
+                  <test-case name="ChecksumValidation.UnitTest.ValidationTester.TestIdentityValidationPositively" executed="True" result="Success" success="True" time="0.016" asserts="0">
+                    <categories>
+                      <category name="IdentityValidation" />
+                    </categories>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
