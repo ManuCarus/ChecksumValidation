@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.ethical-hacking.de/ChecksumValidation/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.ethical-hacking.de/ChecksumValidation/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service validates german bank accounts by computing a checksum according to the algorithms maintained and documented by www.bundesbank.de. Also validates german identity cards, german passports, international bank accounts (IBAN) and credit cards.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.ethical-hacking.de/ChecksumValidation/">
+      <s:element name="LoadBankDirectory">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoadBankDirectoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadBankDirectoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SecuritySettings" type="tns:SecuritySettings" />
+      <s:complexType name="SecuritySettings">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="secureConnection" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="ValidateBankAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="blz" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="account" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateBankAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateBankAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormatBlz">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="blz" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormatBlzResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FormatBlzResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToIban">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="blz" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="account" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToIbanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ToIbanResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateIban">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iban" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateIbanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateIbanResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormatIban">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iban" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormatIbanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FormatIbanResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateCreditCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="creditCardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateCreditCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateCreditCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCreditCardType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="creditCardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCreditCardTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCreditCardTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateGermanIdentityCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="identityId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateGermanIdentityCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateGermanIdentityCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateGermanPassport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="identityId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateGermanPassportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateGermanPassportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoadBankDirectorySoapIn">
+    <wsdl:part name="parameters" element="tns:LoadBankDirectory" />
+  </wsdl:message>
+  <wsdl:message name="LoadBankDirectorySoapOut">
+    <wsdl:part name="parameters" element="tns:LoadBankDirectoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadBankDirectorySecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:message name="ValidateBankAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateBankAccount" />
+  </wsdl:message>
+  <wsdl:message name="ValidateBankAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateBankAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateBankAccountSecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:message name="FormatBlzSoapIn">
+    <wsdl:part name="parameters" element="tns:FormatBlz" />
+  </wsdl:message>
+  <wsdl:message name="FormatBlzSoapOut">
+    <wsdl:part name="parameters" element="tns:FormatBlzResponse" />
+  </wsdl:message>
+  <wsdl:message name="FormatBlzSecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:message name="ToIbanSoapIn">
+    <wsdl:part name="parameters" element="tns:ToIban" />
+  </wsdl:message>
+  <wsdl:message name="ToIbanSoapOut">
+    <wsdl:part name="parameters" element="tns:ToIbanResponse" />
+  </wsdl:message>
+  <wsdl:message name="ToIbanSecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:message name="ValidateIbanSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateIban" />
+  </wsdl:message>
+  <wsdl:message name="ValidateIbanSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateIbanResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateIbanSecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:message name="FormatIbanSoapIn">
+    <wsdl:part name="parameters" element="tns:FormatIban" />
+  </wsdl:message>
+  <wsdl:message name="FormatIbanSoapOut">
+    <wsdl:part name="parameters" element="tns:FormatIbanResponse" />
+  </wsdl:message>
+  <wsdl:message name="FormatIbanSecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:message name="ValidateCreditCardSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="ValidateCreditCardSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateCreditCardSecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditCardTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCreditCardType" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditCardTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCreditCardTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditCardTypeSecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:message name="ValidateGermanIdentityCardSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateGermanIdentityCard" />
+  </wsdl:message>
+  <wsdl:message name="ValidateGermanIdentityCardSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateGermanIdentityCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateGermanIdentityCardSecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:message name="ValidateGermanPassportSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateGermanPassport" />
+  </wsdl:message>
+  <wsdl:message name="ValidateGermanPassportSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateGermanPassportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateGermanPassportSecuritySettings">
+    <wsdl:part name="SecuritySettings" element="tns:SecuritySettings" />
+  </wsdl:message>
+  <wsdl:portType name="ChecksumValidationSoap">
+    <wsdl:operation name="LoadBankDirectory">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service loads the bank directory (for testing purposes only, no caching for stateless web service possible).</wsdl:documentation>
+      <wsdl:input message="tns:LoadBankDirectorySoapIn" />
+      <wsdl:output message="tns:LoadBankDirectorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateBankAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service validates a german bank code against an account number by computing a checksum and comparing it to the given checksum within the account number. The algorithms used to compute checksums are maintained by www.bundesbank.de. Sample: blz = 37050299/ account = 1234567897</wsdl:documentation>
+      <wsdl:input message="tns:ValidateBankAccountSoapIn" />
+      <wsdl:output message="tns:ValidateBankAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FormatBlz">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service formats a german bank code into its standard string representation. Sample: blz = 37050299</wsdl:documentation>
+      <wsdl:input message="tns:FormatBlzSoapIn" />
+      <wsdl:output message="tns:FormatBlzSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ToIban">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service computes an international bank account number (IBAN) from a german bank code and account number. Sample: blz = 37050299, account = 1234567890</wsdl:documentation>
+      <wsdl:input message="tns:ToIbanSoapIn" />
+      <wsdl:output message="tns:ToIbanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateIban">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service validates an international bank account number (IBAN). It computes a checksum for all characters of the (unformatted) IBAN, as described in ISO 13616 and EBS (European Banking Standard), and compares that checksum to the one provided within the IBAN. Algorithms are provided for the following countries: Belgium, Denmark, Germany, Finland, France, Great Britain, Ireland, Iceland, Italy, Luxembourg, Netherlands, Norway, Austria, Poland, Portugal, Sweden, Switzerland, Spain. Sample: iban = DE60700517550000007229</wsdl:documentation>
+      <wsdl:input message="tns:ValidateIbanSoapIn" />
+      <wsdl:output message="tns:ValidateIbanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FormatIban">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service formats an international bank account number (IBAN) the way it's got to be printed on a document. Sample: iban = DE60700517550000007229</wsdl:documentation>
+      <wsdl:input message="tns:FormatIbanSoapIn" />
+      <wsdl:output message="tns:FormatIbanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCreditCard">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service validates a credit card number. It checks the type of the credit card (e.g. Visa) and computes its checksum. This checksum is then compared to the one provided within the credit card number. Currently, this web service supports American Express, Diner's Club, Discover, EnRoute, JCB, MasterCard, Visa, Bahncard and Miles &amp; More. Please recognize that EuroCards and CrediCards are treated as MasterCards. Sample: creditCardNumber = 4509472140549006</wsdl:documentation>
+      <wsdl:input message="tns:ValidateCreditCardSoapIn" />
+      <wsdl:output message="tns:ValidateCreditCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditCardType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service retrieves the type of the credit card (e.g. Visa). Sample: creditCardNumber = 4509472140549006</wsdl:documentation>
+      <wsdl:input message="tns:GetCreditCardTypeSoapIn" />
+      <wsdl:output message="tns:GetCreditCardTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGermanIdentityCard">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service validates a german identity card id. Sample: identityId = 2406055684D&lt;&lt;6810203&lt;0705109&lt;&lt;&lt;&lt;&lt;&lt;6</wsdl:documentation>
+      <wsdl:input message="tns:ValidateGermanIdentityCardSoapIn" />
+      <wsdl:output message="tns:ValidateGermanIdentityCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGermanPassport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service validates a german passport id. Sample: identityId = 2406055684D&lt;&lt;6810203M0705109&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;6</wsdl:documentation>
+      <wsdl:input message="tns:ValidateGermanPassportSoapIn" />
+      <wsdl:output message="tns:ValidateGermanPassportSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ChecksumValidationSoap" type="tns:ChecksumValidationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoadBankDirectory">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/LoadBankDirectory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:LoadBankDirectorySecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateBankAccount">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateBankAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateBankAccountSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormatBlz">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/FormatBlz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FormatBlzSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToIban">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ToIban" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ToIbanSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateIban">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateIban" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateIbanSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormatIban">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/FormatIban" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FormatIbanSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCreditCard">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateCreditCardSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditCardType">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/GetCreditCardType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCreditCardTypeSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGermanIdentityCard">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateGermanIdentityCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateGermanIdentityCardSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGermanPassport">
+      <soap:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateGermanPassport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateGermanPassportSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ChecksumValidationSoap12" type="tns:ChecksumValidationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoadBankDirectory">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/LoadBankDirectory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:LoadBankDirectorySecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateBankAccount">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateBankAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateBankAccountSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormatBlz">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/FormatBlz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FormatBlzSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToIban">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ToIban" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ToIbanSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateIban">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateIban" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateIbanSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormatIban">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/FormatIban" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FormatIbanSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCreditCard">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateCreditCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateCreditCardSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditCardType">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/GetCreditCardType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCreditCardTypeSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGermanIdentityCard">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateGermanIdentityCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateGermanIdentityCardSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGermanPassport">
+      <soap12:operation soapAction="http://www.ethical-hacking.de/ChecksumValidation/ValidateGermanPassport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateGermanPassportSecuritySettings" part="SecuritySettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ChecksumValidation">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service validates german bank accounts by computing a checksum according to the algorithms maintained and documented by www.bundesbank.de. Also validates german identity cards, german passports, international bank accounts (IBAN) and credit cards.</wsdl:documentation>
+    <wsdl:port name="ChecksumValidationSoap" binding="tns:ChecksumValidationSoap">
+      <soap:address location="http://localhost:49152/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ChecksumValidationSoap12" binding="tns:ChecksumValidationSoap12">
+      <soap12:address location="http://localhost:49152/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
