@@ -1,0 +1,82 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8458E52B-2414-432E-B8CF-8F2750E72133}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChecksumValidation</RootNamespace>
+    <AssemblyName>ChecksumValidation</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>ChecksumValidation.dll.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BankAccountValidation\Bank.cs" />
+    <Compile Include="BankAccountValidation\BankAccountValidator.cs" />
+    <Compile Include="BankAccountValidation\BankException.cs" />
+    <Compile Include="BankAccountValidation\BankFactory.cs" />
+    <Compile Include="ChecksumException.cs" />
+    <Compile Include="CommandHandler.cs" />
+    <Compile Include="CreditCardValidation\CreditCardValidationException.cs" />
+    <Compile Include="CreditCardValidation\CreditCardValidator.cs" />
+    <Compile Include="DisplayHelper.cs" />
+    <Compile Include="IbanValidation\IbanValidationException.cs" />
+    <Compile Include="IbanValidation\IbanValidator.cs" />
+    <Compile Include="IdentityValidation\IdentityValidationException.cs" />
+    <Compile Include="IdentityValidation\IdentityValidator.cs" />
+    <Compile Include="RegexChecker.cs" />
+    <Compile Include="Security\SecurityController.cs" />
+    <Compile Include="TraceManager.cs" />
+    <Compile Include="ValidationUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ChecksumValidation.dll.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)..\bin\
+copy $(TargetPath) $(SolutionDir)..\soap\bin\
+copy $(SolutionDir)gpl.txt $(SolutionDir)..\bin\
+copy $(SolutionDir)blz_??????.txt $(SolutionDir)..\bin\
+copy $(SolutionDir)blz_??????.txt $(TargetDir)
+copy $(SolutionDir)gpl.txt $(SolutionDir)ChecksumClient\bin\Debug\
+copy $(SolutionDir)gpl.txt $(SolutionDir)ChecksumComServer\bin\Debug\
+copy $(SolutionDir)gpl.txt $(SolutionDir)ChecksumSoapServer\bin\
+copy $(SolutionDir)gpl.txt $(SolutionDir)ChecksumTcpServer\bin\Debug\
+copy $(SolutionDir)gpl.txt $(SolutionDir)ChecksumUnitTest\bin\Debug\
+copy $(SolutionDir)gpl.txt $(SolutionDir)ChecksumUtility\bin\Debug\
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>
